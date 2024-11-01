@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo list</title>
+    <link href="index.css" rel="stylesheet">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+</head>
+<body>
+<div class="todo-list">
+    <div class="todo-list__header">
+        <h1 class="todo-list__title">Список дел</h1>
+        <form class="todo-list__form" id="form">
+            <div class="todo-list__field">
+                <input class="todo-list__input" id="title" placeholder="Заголовок" name="title" data-bind="value: title">
+                <label class="todo-list__label" for="title">Заголовок</label>
+            </div>
+            <button class="todo-list__add" data-bind="event: { click: addItem }">Добавить</button>
+        </form>
+    </div>
+    <ul class="todo-list__items" data-bind="foreach: list">
+        <li class="todo-list-item">
+            <span class="todo-list-item__text" data-bind="text: $data.name, css: { _done: $data.done }, click: $parent.toggleCheck"></span>
+            <button class="todo-list-item__remove" data-bind="click: $parent.removeItem">
+                <span class="todo-list-item__remove-text">x</span>
+            </button>
+        </li>
+    </ul>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
